@@ -23,7 +23,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <!-- import CSS -->
-    <link rel="stylesheet" href="../static/css/home.css">
+    <link rel="stylesheet" href="{% static '/css/home.css' %}">
     <!-- import ChartJS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
@@ -101,7 +101,7 @@
                     <option value=""disabled>กฟจ.พะเยา</option>
                     <option value=""disabled>กฟจ.แม่ฮ่องสอน</option>
                     <!-- C2 -->
-                    <option value="">กฟฟ.พัทยา</option>
+                    <option value="">กฟฟ.เมืองพัทยา</option>
                     <option value="">กฟจ.ชลบุรี</option>
                     <!--  -->
                 </select>
@@ -131,7 +131,7 @@
                                 </div>
                             </div>
                             <div class="col" style="padding-left: 0px; padding-right: 0px; margin-top: 18px;">
-                                <img src="../static/icons/error.png" style="height: 24px; width: 24; margin-left: -12px;" alt="">
+                                <img src="{% static '/icons/error.png' %}" style="height: 24px; width: 24; margin-left: -12px;" alt="">
                             </div>
                         </div>
                         <div class="row" style="margin-top: -10px;">
@@ -176,7 +176,7 @@
                                 </div>
                             </div>
                             <div class="col" style="padding-left: 0px; padding-right: 0px; margin-top: 18px;">
-                                <img src="../static/icons/error.png" style="height: 24px; width: 24; margin-left: -12px;" alt="">
+                                <img src="{% static '/icons/error.png' %}" style="height: 24px; width: 24; margin-left: -12px;" alt="">
                             </div>
                         </div>
                         <div class="row" style="margin-top: -10px;">
@@ -222,7 +222,7 @@
                                 </div>
                             </div>
                             <div class="col" style="padding-left: 0px; padding-right: 0px; margin-top: 18px;">
-                                <img src="../static/icons/error.png" style="height: 24px; width: 24; margin-left: -12px;" alt="">
+                                <img src="{% static '/icons/error.png' %}" style="height: 24px; width: 24; margin-left: -12px;" alt="">
                             </div>
                         </div>
                         <div class="row" style="margin-top: -10px;">
@@ -268,7 +268,7 @@
                                 </div>
                             </div>
                             <div class="col" style="padding-left: 0px; padding-right: 0px; margin-top: 18px;">
-                                <img src="../static/icons/error.png" style="height: 24px; width: 24; margin-left: -12px;" alt="">
+                                <img src="{% static '/icons/error.png' %}" style="height: 24px; width: 24; margin-left: -12px;" alt="">
                             </div>
                         </div>
                         <div class="row" style="margin-top: -10px;">
@@ -419,8 +419,8 @@
         <!-- Copyright -->
   </footer>
   <!-- Footer -->
-<script src="../static/js/home.js"></script>
-<script src="../static/js/map_component.js"></script>  
-<script src="../static/js/chart_component.js"></script>  
+<script src="{% static '/js/home.js' %}"></script>
+<script src="{% static '/js/map_component.js' %}"></script>  
+<script src="{% static '/js/chart_component.js' %}"></script>  
 </body>
 </html>
