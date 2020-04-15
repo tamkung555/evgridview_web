@@ -20,7 +20,8 @@ from django.contrib.gis import admin
 from django.urls import include, path
 
 from transformer_model.views import search_by_peano, count_by_flag, \
-                                    map_request, index, map_query_extend
+                                    map_request, index, map_query_extend, \
+                                    dashboard, update_attribute_transformer
 
 from aoj_model.views import select_aoj_request
 
@@ -31,7 +32,9 @@ urlpatterns = [
     url(r'^count/', count_by_flag),
     url(r'^show/', map_request),
     url(r'^index/', index),
+    url(r'^home/', dashboard),
     url(r'^query/', map_query_extend),
+    url(r'^update/', update_attribute_transformer),
     url(r'^aoj_select/', select_aoj_request),
     
     ]

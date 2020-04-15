@@ -92,7 +92,7 @@
             </div>
             <div class="col-sm layout-container">
                 <p class="areaSelectorContent"> เลือกสำนักงานการไฟฟ้า: </p>
-                <select id="my-select-sub-area" name="my-select-sub-area" class="areaSelector">
+                <select id="office_selector" name="my-select-sub-area" class="areaSelector" onchange="callback_aoj();">
                     <option value=""disabled>กฟฟ.เชียงใหม่</option>
                     <option value=""disabled>กฟจ.เชียงใหม่ 2</option>
                     <option value=""disabled>กฟจ.เชียงราย</option>
@@ -101,19 +101,19 @@
                     <option value=""disabled>กฟจ.พะเยา</option>
                     <option value=""disabled>กฟจ.แม่ฮ่องสอน</option>
                     <!-- C2 -->
-                    <option value="">กฟฟ.เมืองพัทยา</option>
+                    <option value="0806101">กฟฟ. เมืองพัทยา</option>
                     <option value="">กฟจ.ชลบุรี</option>
                     <!--  -->
                 </select>
             </div>
             <div class="col-sm layout-container">
                 <p class="areaSelectorContent"> เลือกปีพยากรณ์: </p>
-                <select id="my-select-area" name="my-select-area" class="areaSelector">
-                    <option value="">ปี 2563</option>
-                    <option value="">ปี 2564</option>
-                    <option value="">ปี 2565</option>
-                    <option value="">ปี 2566</option>
-                    <option value="">ปี 2567</option>
+                <select id="year_selector" name="my-select-year" class="areaSelector" onchange="handleCallback();">
+                    <option value=0>ปี 2563</option>
+                    <option value=1>ปี 2564</option>
+                    <option value=2>ปี 2565</option>
+                    <option value=3>ปี 2566</option>
+                    <option value=4>ปี 2567</option>
                     <!-- This Option is created by jquerry -->
                 </select>
             </div>

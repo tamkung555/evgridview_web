@@ -134,7 +134,7 @@ class Transformer_C2(models.Model):
     loadProfile_ev = models.CharField(null=True, blank=True, max_length=800)
     impact = models.CharField(null=True, blank=True, max_length=800)
     flag =  models.BooleanField(default=False)
-    
+    numberOfCustomer = models.IntegerField(null=True, blank=True)
     geom = models.MultiPointField(srid=4326)
     
     def __str__(self):

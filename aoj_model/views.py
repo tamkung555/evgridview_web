@@ -48,6 +48,7 @@ def select_aoj_request(request): # function for select by location and send data
                             "gistag" : i.tag, "feederID": i.feederid, "phase" : i.phasedesig,
                             "name" : i.name, "flag" : i.flag,
                             "impact" : i.impact, "baseload" : i.loadProfile_base,
+                            "numberOfCustomer" : i.numberOfCustomer,
                             "evload" : i.loadProfile_ev, "coordinate": json_obj["coordinates"]})
         
      
