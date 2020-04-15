@@ -83,30 +83,134 @@
             
         });
 
+        var markerSourceGreen = new ol.source.Vector();
+        var markerSourceYellow = new ol.source.Vector();
+        var markerSourceRed = new ol.source.Vector();
+        var markerSourceDefault = new ol.source.Vector();
+        
+        var extend;
+        var markerStyleRed = new ol.style.Style({
+            image: new ol.style.Icon(({
+                opacity: 1,
+                scale: 0.6,
+                src: "{% static 'icons/red.png' %}"
+            }))
+        });
+        
+        var markerStyleYellow = new ol.style.Style({
+            image: new ol.style.Icon(({
+                opacity: 1,
+                scale: 0.6,
+                src: "{% static 'icons/yellow.png' %}"
+            }))
+        });
+
+        var markerStyleGreen = new ol.style.Style({
+            image: new ol.style.Icon(({
+                opacity: 1,
+                scale: 0.6,
+                src: "{% static 'icons/green.png' %}"
+            }))
+        });
+
+        var markerStyleDefault = new ol.style.Style({
+            image: new ol.style.Icon(({
+                opacity: 1,
+                scale: 0.6,
+                src: "{% static 'icons/default.png' %}"
+            }))
+        });
+
+        var vectorLayerGreen = new ol.layer.Vector({
+            source: markerSourceGreen,
+            style: markerStyleGreen,
+        });
+
+        var vectorLayerYellow = new ol.layer.Vector({
+            source: markerSourceYellow,
+            style: markerStyleYellow,
+        });
+
+        var vectorLayerRed = new ol.layer.Vector({
+            source: markerSourceRed,
+            style: markerStyleRed,
+        });
+
+        var vectorLayerDefault = new ol.layer.Vector({
+            source: markerSourceDefault,
+            style: markerStyleDefault,
+            minZoom: 14,
+        });
+
+        var map_layer = new ol.layer.Tile({
+            source: new ol.source.OSM(),
+        });
+
+        var aojSource = new ol.source.Vector();
+        var aoj_vector_layer = new ol.layer.Vector({
+        });
+
+        var map_view = new ol.View({
+        center: ol.proj.fromLonLat([parseFloat(100.558621), parseFloat(13.852020)]),
+        zoom: 5,
+        });
+
+        //Declare Map Object
+        var map = new ol.Map({
+        target: 'map',
+        layers: [map_layer, vectorLayerGreen, vectorLayerYellow, vectorLayerRed, vectorLayerDefault, aoj_vector_layer],
+
+        view: map_view,
+        });  //End of map Object
+
+        var element = document.getElementById('popup');
+        var popup = new ol.Overlay({
+            element: element,
+            positioning: 'bottom-center',
+            stopEvent: false,
+            offset: [0, -10]
+        });
+
         function zoom_to_polygon(geo_json){
             //console.log(JSON.parse(geo_json["data"]));
             let geojsonObject = JSON.parse(geo_json["data"]); // Parse AOJ Object to GeoJSON
             let centroid_aoj = geo_json["coordinate_cent"];
             var point_to_plot = JSON.parse(geo_json["point"]);
-            console.log(point_to_plot[0]["peano"])
+            
             /* Function Below not complete */
             var features = new ol.format.GeoJSON().readFeatures(geojsonObject);
             //console.log(JSON.parse(point_to_plot[0])["coordinates"])
+
             features.forEach(function(feature){ feature.setId(undefined) });
-            features.forEach(function(feature){ console.log(feature)});
-            var aoj_layer = new ol.layer.Vector({
-                source: new ol.source.Vector({
-                    features: features
-                }),
-                style: style_aoj
+            
+            //var aoj_layer = new ol.layer.Vector({
+            //    source: new ol.source.Vector({
+            //        features: features
+            //    }),
+            //    style: style_aoj
+            //});
+            //console.log(features);
+            
+            //aojSource.addFeature(features);
+            //aoj_vector_layer.source = aojSource;
+            
+            //console.log(features);
+            //console.log(aoj_vector_layer);
+            
+            aoj_vector_layer = ol.layer.Vector({
+                source : new ol.source.Vector({
+                                feature : features,
+                            }),
+
+                style :  style_aoj
+                
             });
-            e
-            map.addLayer(aoj_layer)
+
             map.setView(new ol.View({
                 center: ol.proj.fromLonLat([parseFloat(centroid_aoj[0]), parseFloat(centroid_aoj[1])]),
-                zoom: 14, 
+                zoom: 15, 
             }));
-
+            
             let inx;
             for(inx =0; inx < Object.keys(point_to_plot).length ; inx++){
                 let peano_label = point_to_plot[inx]["peano"];
@@ -114,8 +218,7 @@
                 let feederid = point_to_plot[inx]["feederid"];
                 let latitude = point_to_plot[inx]["coordinate"][0][1];
                 let longitude = point_to_plot[inx]["coordinate"][0][0];
-                //console.log(label)
-                //let point_tr_in_aoj = JSON.parse(point_to_plot[inx])["coordinates"]
+
                 plotMarker(latitude, longitude, peano_label , "default");
             
             }
@@ -173,7 +276,6 @@
             
         };
 
-        var extend;
         function map_redraw(output_ags){ // Redraw Map after get search result.
             console.log(output_ags)
             let coordinate = output_ags["coordinate"];
@@ -214,108 +316,24 @@
         
         };// End function
 
-        var markerSourceGreen = new ol.source.Vector();
-        var markerSourceYellow = new ol.source.Vector();
-        var markerSourceRed = new ol.source.Vector();
-        var markerSourceDefault = new ol.source.Vector();
-        var aojSource = new ol.source.Vector();
-
-        var markerStyleRed = new ol.style.Style({
-            image: new ol.style.Icon(({
-                opacity: 1,
-                scale: 0.6,
-                src: "{% static 'icons/red.png' %}"
-            }))
-        });
-        
-        var markerStyleYellow = new ol.style.Style({
-            image: new ol.style.Icon(({
-                opacity: 1,
-                scale: 0.6,
-                src: "{% static 'icons/yellow.png' %}"
-            }))
-        });
-
-        var markerStyleGreen = new ol.style.Style({
-            image: new ol.style.Icon(({
-                opacity: 1,
-                scale: 0.6,
-                src: "{% static 'icons/green.png' %}"
-            }))
-        });
-
-        var markerStyleDefault = new ol.style.Style({
-            image: new ol.style.Icon(({
-                opacity: 1,
-                scale: 0.6,
-                src: "{% static 'icons/default.png' %}"
-            }))
-        });
-
-        var vectorLayerGreen = new ol.layer.Vector({
-            source: markerSourceGreen,
-            style: markerStyleGreen,
-        });
-
-        var vectorLayerYellow = new ol.layer.Vector({
-            source: markerSourceYellow,
-            style: markerStyleYellow,
-        });
-
-        var vectorLayerRed = new ol.layer.Vector({
-            source: markerSourceRed,
-            style: markerStyleRed,
-        });
-
-        var vectorLayerDefault = new ol.layer.Vector({
-            source: markerSourceDefault,
-            style: markerStyleDefault,
-        });
-
-
-        var map_layer = new ol.layer.Tile({
-            source: new ol.source.OSM(),
-        });
-
-        var map_view = new ol.View({
-        center: ol.proj.fromLonLat([parseFloat(100.558621), parseFloat(13.852020)]),
-        zoom: 5,
-        });
-
-        //Declare Map Object
-        var map = new ol.Map({
-        target: 'map',
-        layers: [map_layer, vectorLayerGreen, vectorLayerYellow, vectorLayerRed, vectorLayerDefault,],
-        view: map_view,
-        });  //End of map Object
-
-    
-        var element = document.getElementById('popup');
-        var popup = new ol.Overlay({
-            element: element,
-            positioning: 'bottom-center',
-            stopEvent: false,
-            offset: [0, -10]
-        });
-  
         map.addOverlay(popup);
         map.on('click', function(evt) {
         var feature = map.forEachFeatureAtPixel(evt.pixel,
-        function(feature) {
-            return feature;
-        });
-        if (feature) {
-                    var coordinates = feature.getGeometry().getCoordinates();
-                    popup.setPosition(coordinates);
-                    $(element).popover({
-                        placement: 'top',
-                        html: true,
-                        content: feature.get('pea')
-                    });
-                    $(element).popover('show');
-        } else {
-                    $(element).popover('destroy');
-        }
+            function(feature) {
+                return feature;
+            });
+            if (feature) {
+                        var coordinates = feature.getGeometry().getCoordinates();
+                        popup.setPosition(coordinates);
+                        $(element).popover({
+                            placement: 'top',
+                            html: true,
+                            content: feature.get('pea')
+                        });
+                        $(element).popover('show');
+            } else {
+                        $(element).popover('destroy');
+            }
         });
         
         function plotMarker(lat, lon, pea, color){ //Function for plot point feature in vector layer
@@ -362,12 +380,8 @@
 
         }; //End handleCallback Function
 
-        var alltr = [];
-
         {% for i in data %}
-            //console.log('{{i.lat|escapejs}}');
-            //console.log('{{i.geom|escapejs}}');
-            alltr.push('{{i|escapejs}}')
+
             var data = '{{i|escapejs}}'
             var lat = '{{i.lat|escapejs}}'
             var lon = '{{i.long|escapejs}}'
