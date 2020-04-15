@@ -1,0 +1,75 @@
+h1,h2,h3,h4,h5,h6 {
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.header_template {
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.DTMS_brand {
+    color: #337ab7;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+}
+
+a {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+}
+
+.layout-container {
+    font-family: 'Montserrat', sans-serif;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+}
+
+.heading-content-area {
+    height: 60px;
+}
+
+.areaSelector {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    font-size: 14px;
+}
+
+.areaSelectorContent {
+    color: #070C24;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    padding-top: 10px;
+}
+
+.resultBox {
+    width: 100%;
+    height: 120px;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 15px 36px;
+    border: 1.5px solid #070C24;
+}
+
+.basic-report {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    font-size: 16px;
+    background-color: white;
+}
+
+.result_content {
+    color: #2ab4c0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+}
+
+.unit_content {
+    color: #AAB5BC;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+}
