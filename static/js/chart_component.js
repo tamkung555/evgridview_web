@@ -19,7 +19,7 @@ var chart = new Chart(ctx, {
             data: [400, 380, 520, 700, 800,]
         },
         {
-            label: 'Over-Voltage',
+            label: 'Under-Voltage',
             backgroundColor: 'rgb(255, 99, 132, 0.5)',
             borderColor: 'rgb(255, 99, 132)',
             data: [400, 420, 520, 610, 720,]
