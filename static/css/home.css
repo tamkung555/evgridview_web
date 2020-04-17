@@ -73,3 +73,10 @@ a {
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
 }
+
+.heading-table {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    font-size: 18px;
+    color: #2ab4c0;
+}
