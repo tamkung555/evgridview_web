@@ -75,28 +75,26 @@
         <div class="row" style="margin-top: 10px;">
             <div class="col-sm layout-container">
                 <p class="areaSelectorContent"> เลือกการไฟฟ้าเขต: </p>
-                <select id="my-select-area" name="my-select-area" class="areaSelector">
-                    <option value="" selected>กรุณาเลือกการไฟฟ้าเขต</option>
-                    <option value=""disabled>กฟน.1 (เชียงใหม่)</option>
-                    <option value=""disabled>กฟน.2 (พิษณุโลก)</option>
-                    <option value=""disabled>กฟน.3 (ลพบุรี)</option>
-                    <option value=""disabled>กฟฉ.1 (อุดรธานี)</option>
-                    <option value=""disabled>กฟฉ.2 (อุบลราชธานี)</option>
-                    <option value=""disabled>กฟฉ.3 (นครราชสีมา)</option>
-                    <option value=""disabled>กฟก.1 (อยุธยา)</option>
-                    <option value="">กฟก.2 (ชลบุรี)</option>
-                    <option value=""disabled>กฟก.3 (นครปฐม)</option>
-                    <option value=""disabled>กฟต.1 (เพชรบุรี)</option>
-                    <option value=""disabled>กฟต.2 (นครศรีธรรมราช)</option>
-                    <option value=""disabled>กฟต.3 (ยะลา)</option>
+                <select name="category" class="areaSelector">
+                    <option value="None" selected>กรุณาเลือกการไฟฟ้าเขต</option>
+                    <option value="N1">กฟน.1 (เชียงใหม่)</option>
+                    <option value="N2">กฟน.2 (พิษณุโลก)</option>
+                    <option value="N3">กฟน.3 (ลพบุรี)</option>
+                    <option value="NE1">กฟฉ.1 (อุดรธานี)</option>
+                    <option value="NE2">กฟฉ.2 (อุบลราชธานี)</option>
+                    <option value="NE3">กฟฉ.3 (นครราชสีมา)</option>
+                    <option value="C1">กฟก.1 (อยุธยา)</option>
+                    <option value="C2">กฟก.2 (ชลบุรี)</option>
+                    <option value="C3">กฟก.3 (นครปฐม)</option>
+                    <option value="S1">กฟต.1 (เพชรบุรี)</option>
+                    <option value="S2">กฟต.2 (นครศรีธรรมราช)</option>
+                    <option value="S3">กฟต.3 (ยะลา)</option>
                 </select>
             </div>
             <div class="col-sm layout-container">
                 <p class="areaSelectorContent"> เลือกสำนักงานการไฟฟ้า: </p>
-
-                <select id="office_selector" name="my-select-sub-area" class="areaSelector" onchange="callback_aoj();">
-
-                    <option value="" selected>กรุณาเลือกสำนักงานการไฟฟ้า</option>
+                <select id="office_selector" name="choices" class="areaSelector" onchange="callback_aoj();">
+                    <!-- <option value="" selected>กรุณาเลือกสำนักงานการไฟฟ้า</option>
                     <option value=""disabled>กฟฟ.เชียงใหม่</option>
                     <option value=""disabled>กฟจ.เชียงใหม่ 2</option>
                     <option value=""disabled>กฟจ.เชียงราย</option>
@@ -104,12 +102,8 @@
                     <option value=""disabled>กฟจ.ลำพูน</option>
                     <option value=""disabled>กฟจ.พะเยา</option>
                     <option value=""disabled>กฟจ.แม่ฮ่องสอน</option>
-                    <!-- C2 -->
-
                     <option value="0806101">กฟฟ. เมืองพัทยา</option>
-                    <option value="">กฟจ.ชลบุรี</option>
-
-                    <!--  -->
+                    <option value="">กฟจ.ชลบุรี</option> -->
                 </select>
             </div>
             <div class="col-sm layout-container">
@@ -329,95 +323,99 @@
             </div>
         </div>
     </div>
+    <!-- Transformer Data -->
     <div class="container" style="margin-top: 10px;">
         <div class="row">
             <div class="col-12" style="padding-top: 16px;">
                 <div class="table-responsive">
                     <div class="layout-container" style="height: 24px; padding-top: 6px;">
-                        <h4 class="heading-table" style="display: inline-block;">รายละเอียดหม้อแปลงจำหน่ายในพื้นที่ 
+                        <h4 class="heading-table" style="display: inline-block;">รายละเอียดหม้อแปลงจำหน่ายในพื้นที่: 
                             <h4 id="choosee_pea_office" class="heading-table" style="padding-left: 10px; display: inline-block;">
                                 
                             </h4>
                         </h4> 
                     </div>
-                    <table class="table layout-container">
-                        <thead>
-                          <tr>
-                            <th scope="col"> Num: </th>
-                            <th scope="col"> PEANO </th>
-                            <th scope="col"> GISTAG </th>
-                            <th scope="col"> RATEKVA </th>
-                            <th scope="col"> Phase </th>
-                            <th scope="col"> FEEDER ID </th>
-                            <th scope="col"> Num. Customers </th>
-                            <th scope="col"> Detail: </th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>123456</td>
-                            <td>211-90787-1222</td>
-                            <td>250</td>
-                            <td>ABC</td>
-                            <td>Feeder 1</td>
-                            <td>82</td>
-                            <td> 
-                                <a href="">show</a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>234152</td>
-                            <td>211-90787-1222</td>
-                            <td>315</td>
-                            <td>ABC</td>
-                            <td>Feeder 1</td>
-                            <td>102</td>
-                            <td> 
-                                <a href="">show</a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td>112299</td>
-                            <td>211-90787-1222</td>
-                            <td>160</td>
-                            <td>ABC</td>
-                            <td>Feeder 1</td>
-                            <td>144</td>
-                            <td> 
-                                <a href="">show</a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row">4</th>
-                            <td>112299</td>
-                            <td>211-90787-1222</td>
-                            <td>160</td>
-                            <td>ABC</td>
-                            <td>Feeder 1</td>
-                            <td>144</td>
-                            <td> 
-                                <a href="">show</a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row">5</th>
-                            <td>112299</td>
-                            <td>211-90787-1222</td>
-                            <td>160</td>
-                            <td>ABC</td>
-                            <td>Feeder 1</td>
-                            <td>144</td>
-                            <td> 
-                                <a href="">show</a>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
+                    <!-- Div for create table -->
+                    <div>
+                        <table class="table layout-container" style="margin-top: 10px;">
+                            <thead>
+                            <tr>
+                                <th scope="col"> Num: </th>
+                                <th scope="col"> PEANO </th>
+                                <th scope="col"> GISTAG </th>
+                                <th scope="col"> RATEKVA </th>
+                                <th scope="col"> Phase </th>
+                                <th scope="col"> FEEDER ID </th>
+                                <th scope="col"> Num. Customers </th>
+                                <th scope="col"> Detail: </th>
+                            </tr>
+                            </thead>
+                            <!-- Call table depend transformer data -->
+                            <tbody id="datatable">
+                                <!-- <tr>
+                                    <th scope="row">1</th>
+                                    <td>123456</td>
+                                    <td>211-90787-1222</td>
+                                    <td>250</td>
+                                    <td>ABC</td>
+                                    <td>Feeder 1</td>
+                                    <td>82</td>
+                                    <td> 
+                                        <a href="">show</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>234152</td>
+                                    <td>211-90787-1222</td>
+                                    <td>315</td>
+                                    <td>ABC</td>
+                                    <td>Feeder 1</td>
+                                    <td>102</td>
+                                    <td> 
+                                        <a href="">show</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>112299</td>
+                                    <td>211-90787-1222</td>
+                                    <td>160</td>
+                                    <td>ABC</td>
+                                    <td>Feeder 1</td>
+                                    <td>144</td>
+                                    <td> 
+                                        <a href="">show</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">4</th>
+                                    <td>112299</td>
+                                    <td>211-90787-1222</td>
+                                    <td>160</td>
+                                    <td>ABC</td>
+                                    <td>Feeder 1</td>
+                                    <td>144</td>
+                                    <td> 
+                                        <a href="">show</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">5</th>
+                                    <td>112299</td>
+                                    <td>211-90787-1222</td>
+                                    <td>160</td>
+                                    <td>ABC</td>
+                                    <td>Feeder 1</td>
+                                    <td>144</td>
+                                    <td> 
+                                        <a href="">show</a>
+                                    </td>
+                                </tr> -->
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            
             </div>
           </div>    
         </div>      
