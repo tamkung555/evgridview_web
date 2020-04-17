@@ -36,7 +36,7 @@
         <div class="container" style="background-color: #3B3F51;" >
           <a class="navbar-brand" href="#">
                 <img src="#" style="height: 30px; width: 30px;" alt="">
-                <a class="DTMS_brand" href="home.html">QVGrid Dashboard</a>
+                <a class="DTMS_brand" href="% templates '/home.html' %">QVGrid Dashboard</a>
               </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -44,7 +44,7 @@
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item active">
-                <a style="color: #337ab7;" class="nav-link" href="#">Home
+                <a style="color: #337ab7;" class="nav-link" href="% templates '/home.html' %">Home
                       <span class="sr-only">(current)</span>
                     </a>
               </li>
@@ -62,7 +62,7 @@
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Testing User</a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                       <a class="dropdown-item disabled" href="#">Setting</a>
-                      <a class="dropdown-item" href="#">Logout</a>
+                      <a class="dropdown-item" href="% templates '/index.html' %">Logout</a>
                     </div>
               </li>
             </ul>
@@ -76,7 +76,8 @@
             <div class="col-sm layout-container">
                 <p class="areaSelectorContent"> เลือกการไฟฟ้าเขต: </p>
                 <select id="my-select-area" name="my-select-area" class="areaSelector">
-                    <option class="" value="" disabled>กฟน.1 (เชียงใหม่)</option>
+                    <option value="" selected>กรุณาเลือกการไฟฟ้าเขต</option>
+                    <option value=""disabled>กฟน.1 (เชียงใหม่)</option>
                     <option value=""disabled>กฟน.2 (พิษณุโลก)</option>
                     <option value=""disabled>กฟน.3 (ลพบุรี)</option>
                     <option value=""disabled>กฟฉ.1 (อุดรธานี)</option>
@@ -92,7 +93,10 @@
             </div>
             <div class="col-sm layout-container">
                 <p class="areaSelectorContent"> เลือกสำนักงานการไฟฟ้า: </p>
-                <select id="my-select-sub-area" name="my-select-sub-area" class="areaSelector">
+
+                <select id="office_selector" name="my-select-sub-area" class="areaSelector" onchange="callback_aoj();">
+
+                    <option value="" selected>กรุณาเลือกสำนักงานการไฟฟ้า</option>
                     <option value=""disabled>กฟฟ.เชียงใหม่</option>
                     <option value=""disabled>กฟจ.เชียงใหม่ 2</option>
                     <option value=""disabled>กฟจ.เชียงราย</option>
@@ -101,19 +105,23 @@
                     <option value=""disabled>กฟจ.พะเยา</option>
                     <option value=""disabled>กฟจ.แม่ฮ่องสอน</option>
                     <!-- C2 -->
-                    <option value="">กฟฟ.เมืองพัทยา</option>
+
+                    <option value="0806101">กฟฟ. เมืองพัทยา</option>
                     <option value="">กฟจ.ชลบุรี</option>
+
                     <!--  -->
                 </select>
             </div>
             <div class="col-sm layout-container">
                 <p class="areaSelectorContent"> เลือกปีพยากรณ์: </p>
-                <select id="my-select-area" name="my-select-area" class="areaSelector">
-                    <option value="">ปี 2563</option>
-                    <option value="">ปี 2564</option>
-                    <option value="">ปี 2565</option>
-                    <option value="">ปี 2566</option>
-                    <option value="">ปี 2567</option>
+                <select id="year_selector" name="my-select-year" class="areaSelector" onchange="handleCallback();">
+                    <option value="" selected>กรุณาเลือกปีพยากรณ์</option>
+                    <option value=0>ปี 2563</option>
+                    <option value=1>ปี 2564</option>
+                    <option value=2>ปี 2565</option>
+                    <option value=3>ปี 2566</option>
+                    <option value=4>ปี 2567</option>
+
                     <!-- This Option is created by jquerry -->
                 </select>
             </div>
@@ -181,7 +189,7 @@
                         </div>
                         <div class="row" style="margin-top: -10px;">
                             <div class="col" style="color: #697882; font-size: 12px;">
-                                หม้อแปลงจ่ายโหลดเกินพอกัดของหม้อแปลง:
+                                หม้อแปลงจ่ายโหลดเกินพิกัดของหม้อแปลง:
                             </div>
                         </div>
                         <div class="row" style="margin-top: 10px;">
@@ -227,7 +235,7 @@
                         </div>
                         <div class="row" style="margin-top: -10px;">
                             <div class="col" style="color: #697882; font-size: 12px;">
-                                หม้อแปลงจ่ายโหลดเกินพอกัดของสายจำหน่าย:
+                                หม้อแปลงจ่ายโหลดเกินพิกัดของสายจำหน่าย:
                             </div>
                         </div>
                         <div class="row" style="margin-top: 10px;">
@@ -308,7 +316,7 @@
     <!-- Grid Layout -->
     <div class="container" style="margin-top: 10px;">
         <div class="row">
-            <div class="col-md" style="padding-left: 0px; padding-right: 0px;">
+            <div class="col-md-6" style="padding-left: 0px; padding-right: 0px;">
                 <!-- Map Layout -->
                 <div id="map" class="map layout-container">
                     <div id="popup">
@@ -316,7 +324,7 @@
                 </div>
                 <!-- End Map Layout -->
             </div>
-            <div class="col-sm" style="background-color: white; margin-left: 0px;">  
+            <div class="col-md-6" style="background-color: white; margin-left: 0px;">  
                 <canvas id="myChart" height="258px" style="background-color: white;"></canvas>
             </div>
         </div>
@@ -324,7 +332,14 @@
     <div class="container" style="margin-top: 10px;">
         <div class="row">
             <div class="col-12" style="padding-top: 16px;">
-                <div class="table-responsive" style="margin-top: 10px;">
+                <div class="table-responsive">
+                    <div class="layout-container" style="height: 24px; padding-top: 6px;">
+                        <h4 class="heading-table" style="display: inline-block;">รายละเอียดหม้อแปลงจำหน่ายในพื้นที่ 
+                            <h4 id="choosee_pea_office" class="heading-table" style="padding-left: 10px; display: inline-block;">
+                                
+                            </h4>
+                        </h4> 
+                    </div>
                     <table class="table layout-container">
                         <thead>
                           <tr>
